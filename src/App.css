@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    background-color: #f7f8ff;
+
+}
+.App .todo-card {
+    width: 40%;
+    padding: 1rem;
+    background-color: #ffffff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin: 7rem auto;
+    border-radius: 0.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App .todo-card h1 {
+    text-align: center;
+    margin: 1rem 0;
+    font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App .todo-card .todo-card-input input {
+    width: 100%;
+    padding: 0.5rem;
+    border: none!important;
+    outline: none!important;
+    background-color: #f1f5f9;
+    color: #657d9a;
+}
+.App .todo-card .todo-card-input button {
+    width: 100%;
+    padding: 0.5rem;
+    outline: none!important;
+    border: none!important;
+    background-color: #abd6fa;
+}
+.App .todo-card .todo-card-input button:hover {
+    transition: color 0.5s ease;
+    color: #ffffff!important;
+}
+.App .error-inner{
+    padding: 0.1rem;
+    background-color: #f5d7da;
+    margin: 1rem auto;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: #6d1b23;
+    letter-spacing: 0.3rem;
+}
+.todos-container .todo{
+    margin: 1.5rem 0;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+}
+.todos-container .todo:hover{
+    transition: background-color 0.5s ease, color 0.5s ease;
+    background-color: #f1f5f9;
+    color: #657d9a;
+}
+.todos-container .todo button{
+    background-color: transparent!important;
+    border: none!important;
+    padding: 0 0.5rem!important;
+    outline: none!important;
+}
+.todos-container .todo #edit-todo{
+    color: #7ce66f;
+}
+.todos-container .todo #delete-todo{
+    color: #de6a69;
+}
+.clear-section{
+    display: flex;
+    justify-content: center;
+}
+.clear-section #clear{
+    background-color: transparent;
+    color: #de6a69;
+    border: none!important;
+    outline: none!important;
+    letter-spacing: 0.3rem;
+}
+.clear-section #clear:hover{
+    transition: background-color 0.5s ease, color 0.5s ease;
+    color: #c05d5c;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.not-active{
+    display: none;
 }
