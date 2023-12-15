@@ -41,14 +41,19 @@ body {
     transition: color 0.5s ease;
     color: #ffffff!important;
 }
-.App .error-inner{
+.App .card-alert{
     padding: 0.1rem;
-    background-color: #f5d7da;
-    margin: 1rem auto;
     border-radius: 0.5rem;
     text-align: center;
-    color: #6d1b23;
     letter-spacing: 0.3rem;
+}
+.App .error-alert{
+    background-color: #f5d7da;
+    color: #6d1b23;
+}
+.App .added-alert{
+    color: #217892;
+    background-color: #d6edd9;
 }
 .todos-container .todo{
     margin: 1.5rem 0;
@@ -82,6 +87,7 @@ body {
     border: none!important;
     outline: none!important;
     letter-spacing: 0.3rem;
+    margin: 1.5rem 0 0 0;
 }
 .clear-section #clear:hover{
     transition: background-color 0.5s ease, color 0.5s ease;
@@ -89,5 +95,5 @@ body {
 }
 
 .not-active{
-    display: none;
+    opacity: 0;
 }
