@@ -21,9 +21,11 @@ body {
     margin: 1rem 0;
     font-weight: bold;
 }
+.App .todo-card .todo-card-input{
+    display: flex;
+}
 
 .App .todo-card .todo-card-input input {
-    width: 100%;
     padding: 0.5rem;
     border: none!important;
     outline: none!important;
@@ -31,16 +33,21 @@ body {
     color: #657d9a;
 }
 .App .todo-card .todo-card-input button {
-    width: 100%;
     padding: 0.5rem;
     outline: none!important;
     border: none!important;
     background-color: #abd6fa;
+
+}
+.App .todo-card .todo-card-input button, input:focus{
+    outline: none!important;
+    box-shadow: none!important;
 }
 .App .todo-card .todo-card-input button:hover {
-    transition: color 0.5s ease;
+    transition: color 0.5s ease!important;
     color: #ffffff!important;
 }
+
 .App .card-alert{
     padding: 0.1rem;
     border-radius: 0.5rem;

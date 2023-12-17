@@ -1,77 +1,60 @@
-import './App.css';
-import {Row, Col} from "reactstrap";
-import {FaRegEdit} from "react-icons/fa";
-import {MdDelete} from "react-icons/md";
-import {useState} from "react";
+import {Row, Col, InputGroup, Input, Button} from "reactstrap";
+import {useState, useEffect} from "react";
+import Alert from "./components/Alert";
+import List from "./components/List"
 
 function App() {
-    const [active, setActive] = useState(false)
-    const [value, setValue] = useState("")
-    const [todos, setTodos] = useState([])
-    const [added, setAdded] = useState(false)
+    const [name, setName] = useState("")
+    const [list, setList] = useState([]);
+    const [isEditing, setIsEditing] = useState(false)
+    const [editId, setEditId] = useState(null)
+    const [alert, setAlert] = useState({show: false, msg: "", type: ""})
 
-    const holdInputValue = event =>{
-        setValue(event.target.value)
+    function handleSubmit() {
+
     }
+    function showAlert() {
 
-    function createTodo () {
-        if (value === ""){
-            setActive(true)
-        } else {
-            setTodos(todos => [...todos,  value])
-            setAdded(true)
-        }
-        setTimeout(() => {
-            setActive(false)
-            setAdded(false)
-        }, 1000)
     }
+    function removeItem() {
 
+    }
+    function editItem() {
 
+    }
+    function clearList() {
+
+    }
     return (
         <div className="App">
-            <div className="todo-card">
-                <div className={active ? "card-alert error-alert" : added ? "card-alert added-alert" : "card-alert not-active"}>
-                    {active ? "Please enter value" : added ? "Item Added To The List" : "null"}
-                </div>
+            <section className="todo-card">
                 <h1>Todo List</h1>
-                <div className="todo-card-input">
-                    <Row>
-                        <Col xs={12} sm={6} md={8} xl={10}>
-                            <input onChange={holdInputValue} placeholder={"I must do it! :)"} type="text"/>
-                        </Col>
-                        <Col xs={12} sm={6} md={4} xl={2}>
-                            <button onClick={createTodo} id={"submit"}>Submit</button>
-                        </Col>
-                    </Row>
-                </div>
-                <div className="todos-container">
-                    {
-                        todos.map(todo => {
-                            return(
-                                <div className="todo">
-                                    <Row>
-                                        <Col xl={10}>
-                                            {todo}
-                                        </Col>
-                                        <Col>
-                                            <button id={"edit-todo"}>
-                                                <FaRegEdit/>
-                                            </button>
-                                            <button id={"delete-todo"}>
-                                                <MdDelete/>
-                                            </button>
-                                        </Col>
-                                    </Row>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-                <div className="clear-section">
-                    <button id={"clear"}>Clear Items</button>
-                </div>
-            </div>
+                <form className="todo-card-input form" action="" onSubmit={handleSubmit}>
+                    {alert.show && <Alert {...alert} removeAlert={showAlert} list={list}/>}
+                    <InputGroup>
+                        <Input
+                            type="text"
+                            placeholder={"I must do it! :)"}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <Button type={"submit"} id={"submit"}>
+                            {isEditing ? "Edit" : "Submit"}
+                        </Button>
+                    </InputGroup>
+                </form>
+                {
+                    list.length > 0 && (
+                        <div>
+                            <List items={list} removeItem={removeItem} editItem={editItem}/>
+                            <div className="clear-section">
+                                <button onClick={clearList} id={"clear"}>Clear Items</button>
+                            </div>
+                        </div>
+                    )
+                }
+
+            </section>
         </div>
     );
 }
