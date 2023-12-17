@@ -4,12 +4,12 @@ import {Row, Col} from "reactstrap";
 import {FaRegEdit} from "react-icons/fa";
 import {MdDelete} from "react-icons/md";
 
-const List = (items, removeItem, editItem) => {
+const List = (todoList, removeItem, editItem) => {
     return(
         <div className="todos-container">
             {
-                items.map((item) => {
-                    const {id, title} = item
+                todoList.map((todo) => {
+                    const {id, title} = todo
                     return (
                         <div className="todo" key={id}>
                             <Row>

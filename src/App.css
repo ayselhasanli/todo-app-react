@@ -58,6 +58,10 @@ body {
     background-color: #f5d7da;
     color: #6d1b23;
 }
+.App .edit-alert{
+    background-color: #f5d7da;
+    color: #ffa200;
+}
 .App .added-alert{
     color: #217892;
     background-color: #d6edd9;
