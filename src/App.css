@@ -58,9 +58,13 @@ body {
     background-color: #f5d7da;
     color: #6d1b23;
 }
+.App .remove-alert{
+    background-color: #6e94b7;
+    color: #ffffff;
+}
 .App .edit-alert{
-    background-color: #f5d7da;
-    color: #ffa200;
+    background-color: #ffedd0;
+    color: #413f3f;
 }
 .App .added-alert{
     color: #217892;
@@ -107,4 +111,5 @@ body {
 
 .not-active{
     opacity: 0;
+    padding: 0.1rem;
 }

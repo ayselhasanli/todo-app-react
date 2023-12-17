@@ -1,7 +1,8 @@
-import {Input, Button} from "reactstrap";
-import {useState, useEffect} from "react";
+import {Input, Button, Row, Col} from "reactstrap";
+import React, {useState, useEffect} from "react";
 import Alert from "./components/Alert";
-import List from "./components/List"
+import {FaRegEdit} from "react-icons/fa";
+import {MdDelete} from "react-icons/md";
 
 const getLocalStorage = () => {
     let list = localStorage.getItem("list")
@@ -41,7 +42,7 @@ function App() {
             setIsEditing(false)
             showAlert(true, "edit", "Item Changed Successfully")
         } else {
-            showAlert(true, "add", "Item Added To The List")
+            showAlert(true, "added", "Item Added To The List")
             const newItem = {id: new Date().getTime().toString(), title: name}
             setTodos([...todos, newItem])
             setName("");
@@ -53,7 +54,7 @@ function App() {
     }
 
     const removeItem = (id) => {
-        setAlert(true, "add", "Item Removed")
+        showAlert(true, "remove", "Item Removed")
         setTodos(todos.filter((item) => item.id !== id));
     }
 
@@ -62,18 +63,18 @@ function App() {
         setIsEditing(true)
         setEditId(id)
         setName(editItem.title)
-        setAlert(true, "edit", "Item Changed")
+        showAlert(true, "edit", "Item Changed")
     }
 
     const clearList = () => {
-        setAlert(true, "add", "Empty List")
+        showAlert(true, "remove", "All Items Removed")
         setTodos([])
     }
 
     return (
         <div className="App">
             <section className="todo-card">
-                {alert.show && <Alert {...alert} removeAlert={showAlert} list={todos}/>}
+                {alert.show ? <Alert {...alert} removeAlert={showAlert} list={todos}/> : <div className={"not-active"}>not active</div> }
                 <h1>Todo List</h1>
                 <form className="todo-card-input form">
                     <Input
@@ -89,7 +90,30 @@ function App() {
                 {
                     todos.length > 0 && (
                         <div>
-                            <List items={todos} removeItem={removeItem} editItem={editItem}/>
+                            <div className="todos-container">
+                                {
+                                    todos.map((todo) => {
+                                        const {id, title} = todo
+                                        return (
+                                            <div className="todo" key={id}>
+                                                <Row>
+                                                    <Col xl={10}>
+                                                        {title}
+                                                    </Col>
+                                                    <Col>
+                                                        <button id={"edit-todo"}>
+                                                            <FaRegEdit onClick={() => editItem(id)}/>
+                                                        </button>
+                                                        <button id={"delete-todo"}>
+                                                            <MdDelete onClick={() => removeItem(id)}/>
+                                                        </button>
+                                                    </Col>
+                                                </Row>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
                             <div className="clear-section">
                                 <button onClick={clearList} id={"clear"}>Clear Items</button>
                             </div>
